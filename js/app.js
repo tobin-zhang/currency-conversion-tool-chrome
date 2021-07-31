@@ -11,13 +11,11 @@ Vue.component('clipboard', window.clipboard)
     displayDecimal:2,//小数位数
     currencyList: currencies 
 }
-console.log('window.currencies',window.currencies);
  new Vue({
   data: data,
   el: '#app',
   template: `
   <div>
- 
 </draggable>
   <van-tabs v-model="active" color="#ff8d29" line-width="50px" >
     <van-tab title="货币转换">
@@ -70,21 +68,17 @@ console.log('window.currencies',window.currencies);
   },
   mounted() {
     this.displayDecimal=Number(this.getDisplayDecimal());
-    console.log('this.getOnOff()',this.getOnOff());
     this.onOff= this.getOnOff() === 'true';
-    console.log('this.onOff',this.onOff);
     this.currencyList =this.getCurrencyList() || this.currencyList;
   },
   methods: {
     setDefault: function (name) {
-      console.log('hello',name);
     },
     onStart() {
       this.drag = true;
     },
     onEnd() {
         this.drag = false;
-        console.log(this.myArray);
     },
     //设置小数位数
     setDisplayDecimal(number){

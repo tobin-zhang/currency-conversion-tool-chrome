@@ -99,19 +99,28 @@ display: flex;
 align-items: center;
 }
 .translate-panel  .cell .left img{
-width:30px;
-border-radius: 4px;
-box-shadow: 2px 2px 4px #999;
+  border-radius: 4px;
+  width:30px;
+  box-shadow: 2px 2px 4px #999;
 }
-.translate-panel  .cell .left span{
- margin-left:8px;
- font-size:16px;
+.translate-panel  .cell .left .name{
+  color:#333;
+  font-size:16px;
+  line-height: 18px;
+  margin: 0 10px;
+  display:flex;
+  flex-direction:column;
 }
-.translate-panel  .cell .right{
+.translate-panel  .cell .left .name .exchange{
+  margin-top: 5px;
+  font-size:12px;
+  color:#b2b2b2;
+}
 
-display: flex;
- flex-direction: column;
- align-items: flex-end;
+.translate-panel  .cell .right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 
 }
 .translate-panel  .cell .right .money{
@@ -122,4 +131,5 @@ color: #5c4cff;
 .translate-panel  .cell .right .unit{
 font-size:12px;
 color:#b2b2b2;
+margin-top: 5px;
 }

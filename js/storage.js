@@ -52,15 +52,6 @@ async function getRateList(){
       }
   });   
 }
-
-//获取划数转换开关
-function getOnOff(){
-
-  return chrome.storage.sync.get({onOff: 'true'}, function(items) {
-    console.log('获取开关');
-    return items.onOff;
-   });
-}
 //获取小数位数
 function getDisplayDecimal(){
   return localStorage.getItem("displayDecimal");
