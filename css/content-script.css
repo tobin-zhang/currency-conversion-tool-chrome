@@ -1,6 +1,5 @@
 .translate-panel {
   position: absolute;
-
   top: -1000px;
   z-index: 1000;
   width: auto;
@@ -10,17 +9,13 @@
   margin-bottom: 24px;
   font-size: 14px;
   font-weight: 400;
-  /* box-shadow: 0 4px 8px -2px rgb(9 30 66 / 25%), 0 0 1px rgb(9 30 66 / 31%); */
-  /* box-shadow:0 0 0 1px #5E636E; */
-  
   background: #f7f8fb;
-  /* border: 1px solid #239aff; */
   border-radius:8px;
   opacity: 0; 
   transition: transform 0.2s ease 0s, opacity 0.2s ease 0s !important;
   margin-bottom: 16px;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.3) !important;
-
+  padding:12px 0;
 }
 .translate-panel.show {
   transform: scale(1);

@@ -4,22 +4,23 @@
     "version": "1.0",
     "description": "货币转换助手",
     "icons": {
-         "16": "images/exchange-16.png",
-        "48": "images/exchange-16.png",
-        "128": "images/exchange-16.png"
+         "16": "images/16px.png",
+        "48": "images/48px.png",
+        "128": "images/128px.png"
     },
     "background":{
             "scripts": ["js/background.js","js/currenciesList.js"]
     },
     "browser_action": {
         "default_icon": {
-            "19": "images/exchange-16.png",
-            "38": "images/exchange-16.png"
+            "16": "images/16px.png",   
+            "24": "images/24px.png",   
+            "32": "images/32px.png"  
         },
         "default_title": "货币转换助手",
         "default_popup":"popup.html"
     },
-    "content_security_policy": "style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-eval' https://cdn.bootcss.com; object-src 'self' ;",
+    "content_security_policy": "style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-eval'; object-src 'self' ;",
     "content_scripts": [
         {
             "注释":"all_frames 可选。控制内容脚本运行在匹配页面的所有框架中还是仅在顶层框架中。默认为 false，意味着仅在顶层框架中运行。",
@@ -31,8 +32,6 @@
         }
     ],
     "permissions": [
-        "activeTab",
-        "contextMenus",
         "storage"
       ],
    "web_accessible_resources": [ "/images/flags/*" ]

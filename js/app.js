@@ -28,7 +28,7 @@ Vue.component('clipboard', window.clipboard)
       <div class="cell" v-for="element in currencyList" :key="element.name">
         <div class="left">
         <van-checkbox v-model="element.isCheck"   icon-size="20px"  checked-color="#ff8d29" ></van-checkbox>
-          <img :src="element.flag"/>
+          <img :src="getFlag(element.flag)"/>
           <div class="content">
           <span class="name">{{element.name}}-{{element.code}}</span>
           <span class="exchange" v-if="element.rate">1{{currencyList[0].code}}={{element.rate}}{{element.code}}</span>
@@ -67,8 +67,9 @@ Vue.component('clipboard', window.clipboard)
     vuedraggable: window.vuedraggable,//当前页面注册组件
   },
   mounted() {
+    console.log('getOnOff',this.getOnOff());
     this.displayDecimal=Number(this.getDisplayDecimal());
-    this.onOff= this.getOnOff() === 'true';
+    this.onOff= this.getOnOff();
     this.currencyList =this.getCurrencyList() || this.currencyList;
   },
   methods: {
@@ -127,6 +128,10 @@ Vue.component('clipboard', window.clipboard)
       result.displayDecimal =localStorage.getItem("displayDecimal");//显示小数位数
       result.currencyList = JSON.parse(localStorage.getItem("currencyList"));//货币列表
       sendMessageToContentScript(result,function(response){});
+    },
+    getFlag(name){
+      let flag =`../images/flags/${name}.svg`; 
+      return flag;
     }
   },
   watch:{

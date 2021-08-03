@@ -55,7 +55,8 @@ Panel.prototype.addCell = function (currentCurrency,amount){
   let cCode = currentCurrency.code.toUpperCase();
   const decValue = Number(lStorageObject.displayDecimal);
   let cAmount = (amount*100/100).toFixed(decValue);
-  let flagUrl= chrome.extension.getURL(currentCurrency.flag);
+  let flag =`../images/flags/${currentCurrency.flag}.svg`; 
+  let flagUrl= chrome.extension.getURL(flag);
   let cellHtml =` 
     <div class="cell">
       <div class="left">
@@ -80,7 +81,7 @@ Panel.prototype.reset = async function () {
 //翻译功能函数 (参数raw的含义:用户选中的文本内容)
 Panel.prototype.calc = async function (currencyType,amount) {
   const rate = await getRateList();
-    const cList=lStorageObject.currencyList;
+    const cList=lStorageObject.currencyList || currencies;
     for(const current of cList){
       current.rate = rate[current.code];
       if(!current.isCheck) continue;
@@ -111,12 +112,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
 let panel = new Panel()
 //监听鼠标的释放事件
 window.onmouseup = function (e) {
+  console.log('start1');
   let raw = window.getSelection().toString().trim() //获取选中的内容
   //获取释放鼠标时，光标位置
   let x = e.pageX
   let y = e.pageY
   //只有被选中的是数字并且开关开启，才进行显示
-  let onOff= JSON.parse(lStorageObject.onOff);
+  let onOff= JSON.parse(lStorageObject.onOff) || true;
   if (~~raw && onOff) {
       //设置面板的显示位置
       panel.pos({x: x, y: y})
