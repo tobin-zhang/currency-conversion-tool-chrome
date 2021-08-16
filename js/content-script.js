@@ -112,14 +112,14 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
 let panel = new Panel()
 //监听鼠标的释放事件
 window.onmouseup = function (e) {
-  console.log('start1');
+
   let raw = window.getSelection().toString().trim() //获取选中的内容
   //获取释放鼠标时，光标位置
   let x = e.pageX
   let y = e.pageY
   //只有被选中的是数字并且开关开启，才进行显示
-  let onOff= JSON.parse(lStorageObject.onOff) || true;
-  if (~~raw && onOff) {
+  let onOff= lStorageObject.onOff ;
+  if (~~raw && ~~onOff) {
       //设置面板的显示位置
       panel.pos({x: x, y: y})
       panel.reset();

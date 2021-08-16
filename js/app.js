@@ -67,9 +67,8 @@ Vue.component('clipboard', window.clipboard)
     vuedraggable: window.vuedraggable,//当前页面注册组件
   },
   mounted() {
-    console.log('getOnOff',this.getOnOff());
     this.displayDecimal=Number(this.getDisplayDecimal());
-    this.onOff= this.getOnOff();
+    this.onOff= this.getOnOff()?true:false;
     this.currencyList =this.getCurrencyList() || this.currencyList;
   },
   methods: {
@@ -91,11 +90,11 @@ Vue.component('clipboard', window.clipboard)
     },
      //设置划数转换开关
     setOnOff(value){
-      localStorage.setItem("onOff", value);
+      localStorage.setItem("onOff", value?1:0);
     },
     //获取划数转换开关
     getOnOff(){
-      return localStorage.getItem("onOff") || true;
+      return JSON.parse(localStorage.getItem("onOff"));
     },
     //设置货币列表
     getCurrencyList(){
