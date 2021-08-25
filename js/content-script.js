@@ -54,6 +54,7 @@ Panel.prototype.addCell = function (currentCurrency,amount){
   containerCell.id= 'div-'+currentCurrency.name;
   let cCode = currentCurrency.code.toUpperCase();
   const decValue = Number(lStorageObject.displayDecimal);
+  console.log('decValue',decValue);
   let cAmount = (amount*100/100).toFixed(decValue);
   let flag =`../images/flags/${currentCurrency.flag}.svg`; 
   let flagUrl= chrome.extension.getURL(flag);
@@ -119,6 +120,7 @@ window.onmouseup = function (e) {
   let y = e.pageY
   //只有被选中的是数字并且开关开启，才进行显示
   let onOff= lStorageObject.onOff ;
+  console.log('onOff',onOff);
   if (~~raw && ~~onOff) {
       //设置面板的显示位置
       panel.pos({x: x, y: y})

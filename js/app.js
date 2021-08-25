@@ -86,7 +86,11 @@ Vue.component('clipboard', window.clipboard)
     },
     //获取小数位数
     getDisplayDecimal(){
-      return localStorage.getItem("displayDecimal");
+      if(localStorage.getItem("displayDecimal") != null){
+        return JSON.parse(localStorage.getItem("displayDecimal"));
+      }else{
+        return 2;
+      }
     },
      //设置划数转换开关
     setOnOff(value){
@@ -94,7 +98,11 @@ Vue.component('clipboard', window.clipboard)
     },
     //获取划数转换开关
     getOnOff(){
-      return JSON.parse(localStorage.getItem("onOff"));
+      if(localStorage.getItem("onOff") != null){
+        return JSON.parse(localStorage.getItem("onOff"));
+      }else{
+        return 1;
+      }
     },
     //设置货币列表
     getCurrencyList(){
@@ -123,8 +131,14 @@ Vue.component('clipboard', window.clipboard)
     },
     sendToContentScript(){
       let result={};
-      result.onOff= localStorage.getItem("onOff");//开关
-      result.displayDecimal =localStorage.getItem("displayDecimal");//显示小数位数
+      result.onOff= 1;
+      if(localStorage.getItem("onOff") != null){
+      result.onOff=localStorage.getItem("onOff");//开关
+      }
+      result.displayDecimal = 2
+      if(localStorage.getItem("displayDecimal") != null){
+        result.displayDecimal = localStorage.getItem("displayDecimal");//显示小数位数
+      }
       result.currencyList = JSON.parse(localStorage.getItem("currencyList"));//货币列表
       sendMessageToContentScript(result,function(response){});
     },
